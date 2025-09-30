@@ -15,7 +15,7 @@ jobs:
       - name: Run black
         run: black .
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: Formate By @TheTeamAlexa
           title: Format code.
