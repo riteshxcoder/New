@@ -1,4 +1,4 @@
-FROM nikolaik/python-nodejs:python3.10-nodejs19
+FROM nikolaik/python-nodejs:python3.10-nodejs20
 
 # Replace old Debian repos with archive repos
 RUN sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
@@ -8,8 +8,15 @@ RUN sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /app/
 WORKDIR /app/
-RUN pip3 install --no-cache-dir -U -r requirements.txt
+
+# Copy pyproject.toml first (for caching)
+COPY pyproject.toml /app/
+
+# Install dependencies via pyproject.toml
+RUN pip install .
+
+# Copy rest of the repo
+COPY . /app/
 
 CMD bash start
