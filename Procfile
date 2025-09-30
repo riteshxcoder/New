@@ -1,1 +1,1 @@
-worker: python -m AloneMusic
+worker: bash start
