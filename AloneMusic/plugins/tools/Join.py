@@ -18,7 +18,7 @@ VC_MONITOR_TASKS = {}
 async def monitor_vc_changes(chat_id: int):
     """Background task to monitor voice chat changes."""
     try:
-        assistant = await group_assistant(Space, chat_id)
+        assistant = await group_assistant(Alone, chat_id)
         if not assistant:
             raise Exception("Assistant not found or not initialized.")
 
