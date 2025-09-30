@@ -5,7 +5,6 @@ from pyrogram.errors import FloodWait
 
 from config import BANNED_USERS
 from AloneMusic.core.call import Alone
-from AloneMusic.utils.admins import AdminRightsCheck as admin_filter
 from AloneMusic.utils.database import group_assistant
 from AloneMusic import app
 
@@ -64,7 +63,7 @@ async def monitor_vc_changes(chat_id: int):
         while chat_id in VC_TRACKING_ENABLED:
             await asyncio.sleep(5)
 
-            assistant = await group_assistant(Space, chat_id)
+            assistant = await group_assistant(Alone, chat_id)
             if not assistant:
                 raise Exception("Assistant not found or not initialized.")
             try:
@@ -122,12 +121,7 @@ async def monitor_vc_changes(chat_id: int):
         VC_MONITOR_TASKS.pop(chat_id, None)
 
 
-@app.on_message(
-    filters.command(["vcinfo", "infovc", "vclogger"])
-    & filters.group
-    & admin_filter
-    & ~BANNED_USERS
-)
+@app.on_message(filters.command(["vcinfo", "infovc", "vclogger"]) & filters.group & ~BANNED_USERS)
 async def vc_info(client: Client, message: Message):
     chat_id = message.chat.id
     args = message.text.split(None, 1)
@@ -153,7 +147,7 @@ async def vc_info(client: Client, message: Message):
         return await message.reply_text("❌ VC tracking is already disabled.")
 
     try:
-        assistant = await group_assistant(Space, chat_id)
+        assistant = await group_assistant(Alone, chat_id)
         if not assistant:
             return await message.reply_text(
                 "❌ Assistant not found. Make sure it has joined the VC."
