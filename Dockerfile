@@ -10,10 +10,10 @@ RUN sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
 
 WORKDIR /app/
 
-# Copy pyproject.toml first (for caching)
+# Copy pyproject.toml first
 COPY pyproject.toml /app/
 
-# Install dependencies via pyproject.toml
+# Install dependencies from pyproject.toml
 RUN pip install .
 
 # Copy rest of the repo
