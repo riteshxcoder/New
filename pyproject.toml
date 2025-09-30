@@ -18,6 +18,7 @@ dependencies = [
   "gitpython",
   "hachoir",
   "heroku3",
+  "humanize",
   "motor",
   "Pillow==9.5.0",
   "psutil",
