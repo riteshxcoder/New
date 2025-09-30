@@ -30,7 +30,7 @@ dependencies = [
     "apscheduler==3.10.1",
     "beautifulsoup4==4.14.2",
     "dnspython==2.4.2",
-    "ffmpeg-python==0.3.0",
+    "ffmpeg-python==0.2.1",
     "gitpython==3.1.45",
     "hachoir==3.1.4",
     "heroku3==5.2.1",
