@@ -1,5 +1,5 @@
 import asyncio
-from pyrogram import Client
+from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 
 from AloneMusic.core.call import Alone
@@ -18,17 +18,15 @@ async def monitor_vc_changes(chat_id: int):
         if not assistant:
             return
 
-        # Initial state
         try:
             participants = await assistant.get_participants(chat_id)
         except Exception:
             return
+
         VC_CACHE[chat_id] = set(p.user_id for p in participants)
 
-        # Loop forever
         while True:
             await asyncio.sleep(5)
-
             try:
                 participants = await assistant.get_participants(chat_id)
             except Exception:
@@ -63,13 +61,12 @@ async def monitor_vc_changes(chat_id: int):
                 text = "\n".join(messages)
                 try:
                     msg = await app.send_message(chat_id, text)
-                    await asyncio.sleep(20)
+                    await asyncio.sleep(15)
                     await msg.delete()
                 except FloodWait as fw:
                     await asyncio.sleep(fw.value)
                 except Exception:
                     pass
-
     except Exception:
         pass
     finally:
@@ -77,8 +74,16 @@ async def monitor_vc_changes(chat_id: int):
         VC_MONITOR_TASKS.pop(chat_id, None)
 
 
-async def start_vc_logger(chat_id: int):
-    """Start monitoring VC for a group."""
+def start_vc_logger(chat_id: int):
+    """Start monitoring VC for a group automatically."""
     if chat_id not in VC_MONITOR_TASKS:
         task = asyncio.create_task(monitor_vc_changes(chat_id))
         VC_MONITOR_TASKS[chat_id] = task
+
+
+# --- AUTO START when any message comes in group ---
+@app.on_message(filters.group)
+async def auto_start_logger(client: Client, message):
+    chat_id = message.chat.id
+    if chat_id not in VC_MONITOR_TASKS:
+        start_vc_logger(chat_id)
