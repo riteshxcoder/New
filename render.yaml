@@ -4,24 +4,21 @@ services:
     env: python
     plan: free
     region: oregon
-    buildCommand: |
-      pip install --upgrade pip
-      pip install ".[all]"
+    buildCommand: pip install --upgrade pip && pip install ".[all]"
     startCommand: python3 -m AloneMusic
     autoDeploy: true
     envVars:
       - key: API_ID
-        fromDatabase: false
         value: ""
       - key: API_HASH
-        fromDatabase: false
         value: ""
       - key: BOT_TOKEN
-        fromDatabase: false
         value: ""
-      - key: STRING_SESSION
-        fromDatabase: false
+      - key: LOGGER_ID
         value: ""
       - key: MONGO_DB_URI
-        fromDatabase: false
+        value: ""
+      - key: OWNER_ID
+        value: ""
+      - key: STRING_SESSION
         value: ""
