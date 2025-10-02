@@ -40,11 +40,8 @@ from AloneMusic.misc import db
 from AloneMusic.utils.database import (
     add_active_chat,
     add_active_video_chat,
-    get_assistant,
-    get_audio_bitrate,
     get_lang,
     get_loop,
-    get_video_bitrate,
     group_assistant,
     is_autoend,
     music_on,
