@@ -18,8 +18,8 @@ load_dotenv()
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 
-API_URL = getenv("API_URL", 'https://api.thequickearn.xyz') #youtube song url
-VIDEO_API_URL = getenv("VIDEO_API_URL", 'https://api.video.thequickearn.xyz')
+API_URL = getenv("API_URL", "https://api.thequickearn.xyz")  # youtube song url
+VIDEO_API_URL = getenv("VIDEO_API_URL", "https://api.video.thequickearn.xyz")
 API_KEY = getenv("API_KEY", None)
 
 # Get your token from @BotFather on Telegram.
@@ -93,21 +93,35 @@ confirmer = {}
 
 
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+    "START_IMG_URL",
+    "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg",
 )
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+    "PING_IMG_URL",
+    "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg",
 )
 PLAYLIST_IMG_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
 STATS_IMG_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
-TELEGRAM_AUDIO_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
-TELEGRAM_VIDEO_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+TELEGRAM_AUDIO_URL = (
+    "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+)
+TELEGRAM_VIDEO_URL = (
+    "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+)
 STREAM_IMG_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
-SOUNCLOUD_IMG_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+SOUNCLOUD_IMG_URL = (
+    "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+)
 YOUTUBE_IMG_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
-SPOTIFY_ARTIST_IMG_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
-SPOTIFY_ALBUM_IMG_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
-SPOTIFY_PLAYLIST_IMG_URL = "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+SPOTIFY_ARTIST_IMG_URL = (
+    "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+)
+SPOTIFY_ALBUM_IMG_URL = (
+    "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+)
+SPOTIFY_PLAYLIST_IMG_URL = (
+    "https://graph.org/file/004b61545b493662eacf1-71a5b2f2f11ff4a41a.jpg"
+)
 
 
 def time_to_seconds(time):
