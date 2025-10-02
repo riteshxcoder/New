@@ -1,1 +1,1 @@
-worker: AloneMusic
+worker: python app.py
