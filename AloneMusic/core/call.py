@@ -35,9 +35,9 @@ from pytgcalls.types import (
 )
 
 import config
-from AlexaMusic import LOGGER, YouTube, app
-from AlexaMusic.misc import db
-from AlexaMusic.utils.database import (
+from AloneMusic import LOGGER, YouTube, app
+from AloneMusic.misc import db
+from AloneMusic.utils.database import (
     add_active_chat,
     add_active_video_chat,
     get_assistant,
@@ -52,10 +52,10 @@ from AlexaMusic.utils.database import (
     remove_active_video_chat,
     set_loop,
 )
-from AlexaMusic.utils.exceptions import AssistantErr
-from AlexaMusic.utils.inline.play import stream_markup, telegram_markup
-from AlexaMusic.utils.stream.autoclear import auto_clean
-from AlexaMusic.utils.thumbnails import gen_thumb
+from AloneMusic.utils.exceptions import AssistantErr
+from AloneMusic.utils.inline.play import stream_markup, telegram_markup
+from AloneMusic.utils.stream.autoclear import auto_clean
+from AloneMusic.utils.thumbnails import gen_thumb
 from strings import get_string
 
 autoend = {}
@@ -655,4 +655,4 @@ class Call(PyTgCalls):
         #         autoend[chat_id] = {}
 
 
-Alexa = Call()
+Alone = Call()
